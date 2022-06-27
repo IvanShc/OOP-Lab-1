@@ -11,11 +11,11 @@ namespace UnitTest1
 
 		TEST_METHOD(TestMethod1)
 		{
-			Sorting S1;
+			Sorting S1(0,4);
 			int count = 0;
 			int expected[] = { -5,0,-7,10,2 };
 			int actual[] = { -7,-5,0,2,10 }; // sorted array
-			S1.quicksort(expected, 0, 4);
+			S1.QuickSort(expected);
 			for (int i = 0; i < 5; i++)
 			{
 				if (expected[i] == actual[i])
@@ -30,11 +30,11 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod2)
 		{
-			Sorting S1;
+			Sorting S1(0,5);
 			int count = 0;
 			int expected[] = { -5,0,-5,10,2,10 };
 			int actual[] = { -5,-5,0,2,10,10 }; // sorted array
-			S1.quicksort(expected, 0, 5);
+			S1.QuickSort(expected);
 			for (int i = 0; i < 6; i++)
 			{
 				if (expected[i] == actual[i])
@@ -50,11 +50,11 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod3)
 		{
-			Sorting S1;
+			Sorting S1(0, 4);
 			int count = 0;
 			int expected[] = { 2,2,2,2,2 };
 			int actual[] = { 2,2,2,2,2 }; // sorted array
-			S1.quicksort(expected, 0, 4);
+			S1.QuickSort(expected);
 			for (int i = 0; i < 5; i++)
 			{
 				if (expected[i] == actual[i])
@@ -69,11 +69,11 @@ namespace UnitTest1
 		}
 		TEST_METHOD(TestMethod4)
 		{
-			Sorting S1;
+			Sorting S1(0, -1);
 			int* Array1 = new int[0];
 			try
 			{
-				S1.quicksort(Array1, 0, -1);
+				S1.QuickSort(Array1);
 			}
 			catch (const std::exception& p1)
 			{
@@ -84,10 +84,10 @@ namespace UnitTest1
 		TEST_METHOD(TestMethod5)
 		{
 			int* Array1 = NULL;
-			Sorting S1;
+			Sorting S1(0, -1);
 			try
 			{
-				S1.quicksort(Array1, 0, -1);
+				S1.QuickSort(Array1);
 			}
 			catch (const std::exception& p1)
 			{

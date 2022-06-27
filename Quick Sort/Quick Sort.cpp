@@ -4,81 +4,108 @@
 #include <fstream>
 #include <stdexcept>
 
+
 class Sorting
 {
+private:
+    int l;
+    int r;
+    void quicksort(int A[], int l, int r);
+    
 public:
-    Sorting()
+    Sorting(int l, int r)
     {
-        std::cout << "Constructor" << std::endl;
+        this->l = l;
+        this->r = r;
     }
-    ~Sorting() 
-    {
-        std::cout << "Garbage cleaning" << std::endl;
-    }
-    int quicksort(int A[], int l, int r);
+    ~Sorting() {}
+
+    void QuickSort(int A[]);
 };
 
-void Input_Array(int* A, int &N)
-{
-    for (int i = 0; i < N ; i++)
-    {
-        std::cin >> A[i];
-    }
-}
 
-void Output_Array(int* A, int &N)
+
+void input(int* m, int& n)
 {
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < n; i++)
     {
-        std::cout << A[i] << " ";
+        std::cin >> m[i];
     }
+
 }
 
 
-int Sorting::quicksort(int A[], int l, int r)
+void print(int* m, int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+    
+        std::cout << m[i] << " ";
+    }
+}
+
+void Sorting::QuickSort(int A[])
+{
+    quicksort(A, l, r);
+}
+
+
+void Sorting::quicksort(int A[], int l, int r)
 {
     if (!std::cin)
     {
         throw std::exception("Incorrect data!");
     }
-    if  (r < 0)
+    if (r < 0)
     {
         throw std::exception("Array must not equal NULL or array is empty!");
     }
-    
-  
-        int pivot = A[(l + r) / 2];
-        int i = l;
-        int j = r;
-        while (i <= j)
+
+
+
+    this->l = l;
+    this->l = r;
+
+
+    int pivot = A[(l + r) / 2];
+    int i = l;
+    int j = r;
+
+
+
+    while (i <= j)
+    {
+        while (A[i] < pivot)
         {
-            while (A[i] < pivot)
-            {
-                i++;
-            }
-            while (A[j] > pivot)
-            {
-                j--;
-            }
-            if (i <= j)
-            {
-                std::swap(A[i], A[j]);
-                i++;
-                j--;
-            }
+            i++;
+
+        }
+        while (A[j] > pivot)
+        {
+            j--;
+
         }
 
-        if (l < j)
+        if (i <= j)
         {
-            return quicksort(A, l, j);
+            std::swap(A[i], A[j]);
+            i++;
+            j--;
         }
 
-        if (r > i)
-        {
-            return quicksort(A, i, r);
-        }
+    }
+
+    if (l < j)
+    {
+        quicksort(A, l, j);
+
+    }
+    if (r > i)
+    {
+        quicksort(A, i, r);
+    }
+
 }
-
 
 
 
@@ -88,19 +115,20 @@ int main()
     std::cout << "Plese enter the number of elements in the array:" << " ";
     std::cin >> N;
     int* Array = new int[N];
-    Sorting Q;
+    
+    Sorting Q(0, N - 1);
     try
     {
         
-        Input_Array(Array, N);
+        input(Array, N);
         std::cout << "Before sorting" << std::endl;
-        Output_Array(Array, N);
+        print(Array, N);
 
         std::cout << std::endl;
 
         std::cout << "After sorting" << std::endl;
-        Q.quicksort(Array, 0, N - 1);
-        Output_Array(Array, N);
+        Q.QuickSort(Array);
+        print(Array, N);
         std::cout << std::endl;
 
     }
