@@ -21,6 +21,10 @@ public:
 
 void QuickSort::Sort(int array[], int size)
 {
+    if (size == NULL)
+    {
+        throw std::exception("Array must not equal NULL");
+    }
     SortPrivate(array, 0, size - 1);
 }
 
@@ -33,7 +37,7 @@ void QuickSort::SortPrivate(int array[], int l, int r)
     }
     if (r < 0)
     {
-        throw std::exception("Array must not equal NULL or array is empty!");
+        throw std::exception("Array is empty!");
     }
 
 
