@@ -19,7 +19,7 @@ namespace UnitTest1
 			Q1.Sort(actual,size );
 			for (int i = 0; i < 5; i++)
 			{
-				if (actual[i] == actual[i])
+				if (expected[i] == actual[i])
 				{
 					count += 1;
 				}

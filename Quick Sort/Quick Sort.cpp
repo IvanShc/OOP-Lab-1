@@ -21,7 +21,7 @@ public:
 
 void QuickSort::Sort(int array[], int size)
 {
-    if (size == NULL)
+    if (array == NULL)
     {
         throw std::exception("Array must not equal NULL");
     }
